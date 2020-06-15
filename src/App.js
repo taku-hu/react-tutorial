@@ -1,34 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-// const App = () => {
-//   // const greeting = 'Hi, Tom!';
-//   // const dom = <h1 className="foo">{greeting}</h1>
-//   // return dom;
-//   return(
-//     <React.Fragment>
-//       <label htmlFor="click">label</label>
-//       <input id="click" type="text" onClick={() => console.log('clicked.')}/>
-//     </React.Fragment>
-//     )
-  
-// }
+const App = () =>  {
+  const profiles = [
+    {
+      name: 'Taro',
+      age: 10
+    },
+    {
+      name: 'Hanako',
+      age: 5
+    },
+    {
+      name: 'Jirou'
+    }
+  ]
+  return (
+    <React.Fragment>
+      {
+        profiles.map((profile, index) =>  {
+          return <User name={profile.name} age={profile.age} key={index}/>
+        })
+      }
 
-class App extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <label htmlFor="click">label</label>
-        <input id="click" type="text" onClick={() => console.log('clicked.')}/>
-        <Cat />
-        <Cat />
-        <Cat />
-      </React.Fragment>
-    )
-  }
+      {/* <User name={'Taro'} age={10}/>
+      <User name={'Hanako'} age={5}/> */}
+    </React.Fragment>
+  )
 }
 
-const Cat = () => {
-  return <div>Meow!</div>
+const User = (props) => {
+  return <div>Hi, I am {props.name}, and {props.age} years old.</div>
+}
+
+User.defaultProps = {
+  age: 1
 }
 
 export default App;
